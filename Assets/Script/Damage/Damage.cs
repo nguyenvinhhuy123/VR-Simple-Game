@@ -41,6 +41,15 @@ public class Damage : MonoBehaviour
         {
             heathRef.Damaged(m_Damage, gameObject.GetComponent<Damage>());
         }
+        else
+        {
+            Health parentHealthRef = other.gameObject.GetComponentInParent<Health>();
+            if (parentHealthRef != null)
+            {   
+                parentHealthRef.Damaged(m_Damage, gameObject.GetComponent<Damage>());
+            }
+            
+        }
     }
     public void SetIgnore(Collider ignore)
     {
