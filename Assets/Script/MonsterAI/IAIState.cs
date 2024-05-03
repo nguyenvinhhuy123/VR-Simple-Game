@@ -6,7 +6,6 @@ public interface IAIState
 {
     void OnEnter();
     void OnExit();
-    void OnInputHandle();
     void OnUpdate();
     void OnFixedUpdate();
 }
