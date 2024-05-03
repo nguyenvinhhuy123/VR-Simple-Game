@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseAIStateMachine : MonoBehaviour
+public abstract class BaseAIStateMachine
 {
     protected IAIState currentState;
     
