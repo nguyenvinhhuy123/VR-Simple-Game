@@ -175,11 +175,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5949254412533045000, guid: 0f8a471e5537f864ebdb454fe82308eb, type: 3}
+      propertyPath: RUN
+      value: Anim_Run
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949254412533045000, guid: 0f8a471e5537f864ebdb454fe82308eb, type: 3}
+      propertyPath: DEAD
+      value: Anim_Death
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949254412533045000, guid: 0f8a471e5537f864ebdb454fe82308eb, type: 3}
+      propertyPath: IDLE
+      value: Anim_Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949254412533045000, guid: 0f8a471e5537f864ebdb454fe82308eb, type: 3}
+      propertyPath: ATTACK
+      value: Anim_Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949254412533045000, guid: 0f8a471e5537f864ebdb454fe82308eb, type: 3}
+      propertyPath: DAMAGED
+      value: Anim_Damage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1713781036754730, guid: 0f8a471e5537f864ebdb454fe82308eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 258893834}
   m_SourcePrefab: {fileID: 100100000, guid: 0f8a471e5537f864ebdb454fe82308eb, type: 3}
+--- !u!1 &258893833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1713781036754730, guid: 0f8a471e5537f864ebdb454fe82308eb, type: 3}
+  m_PrefabInstance: {fileID: 258893832}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &258893834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258893833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d1f8193dd139b4e827a75d3b570656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_hitBox: {fileID: 258893835}
+  m_runSpeed: 5
+  m_distanceToPlayer: 0
+  m_attackRange: 2
+  m_attackRate: 1
+--- !u!1 &258893835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4409340519534967322, guid: 0f8a471e5537f864ebdb454fe82308eb, type: 3}
+  m_PrefabInstance: {fileID: 258893832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &332596191
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +658,14 @@ PrefabInstance:
     - target: {fileID: 7690080512698956844, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696548424635294048, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696548424635294048, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7753638244611149571, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_Health
