@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Animation_Test : MonoBehaviour {
 
+	[Range(1,5)][SerializeField] private int m_current;
 	public const string IDLE	= "Anim_Idle";
 	public const string RUN		= "Anim_Run";
 	public const string ATTACK	= "Anim_Attack";
 	public const string DAMAGE	= "Anim_Damage";
 	public const string DEATH	= "Anim_Death";
 
-	Animation anim;
-
-	void Start () {
-
+	[SerializeField] Animation anim;
+	void Awake()
+	{
 		anim = GetComponent<Animation>();
-		
 	}
 	
 	public void IdleAni (){
@@ -38,4 +37,36 @@ public class Animation_Test : MonoBehaviour {
 		anim.CrossFade (DEATH);
 	}
 
+	void OnValidate()
+	{
+		switch (m_current)
+		{
+			case 1:
+			{
+				RunAni();
+				break;
+			}
+
+			case 2:
+			{
+				AttackAni();
+                break;
+			}
+			case 3:
+			{
+				DamageAni();
+                break;
+			}
+			case 4:
+			{
+				DeathAni();
+                break;
+			}
+			default:
+			{
+				IdleAni();
+                break;
+			}
+		}
+	}
 }
