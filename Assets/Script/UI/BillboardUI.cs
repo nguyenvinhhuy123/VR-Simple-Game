@@ -5,9 +5,12 @@ using UnityEngine;
 public class BillboardUI : MonoBehaviour
 {
 	public Transform cam;
-
-    void LateUpdate()
-    {
-		transform.LookAt(transform.position + cam.forward);
-    }
+  void Awake()
+  {
+    cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
+  }
+  void LateUpdate()
+  {
+  transform.LookAt(transform.position + cam.forward);
+  }
 }
