@@ -22,8 +22,15 @@ public class MonsterAIController : MonoBehaviour
     public float AttackRange {get {return m_attackRange;} set {m_attackRange = value;}}
     [SerializeField] private float m_attackRate; 
     public float AttackRate {get {return m_attackRate;} set {m_attackRate = value;}}
-
     public UnityAction<int, bool> OnDamagedAction;
+    void OnEnable()
+    {
+        OnDamagedAction += OnDamage;
+    }
+    void OnDisable()
+    {
+        OnDamagedAction -= OnDamage;
+    }
 
     void Awake()
     {
@@ -34,25 +41,32 @@ public class MonsterAIController : MonoBehaviour
         m_health = GetComponent<Health>();
         m_damage = GetComponent<Damage>();
     }
+
     void Start()
     {
         m_stateMachine = new MonsterAIStateMachine(this);
+        m_health.RegisterOnDamagedEvent(OnDamagedAction);
+    }
+    void Update()
+    {
+        m_stateMachine.OnUpdate();
     }
     void FixedUpdate()
     {
         m_distanceToPlayer = CalculateDistanceToPlayer();
+        m_stateMachine.OnFixedUpdate();
     }
     public void OnDamage(int currentHealth, bool isDead)
     {
         if (isDead) {OnDead();}
         else 
         {
-
+            m_stateMachine.OnChangeState(m_stateMachine.DamagedState);
         }
     }
     public void OnDead()
     {
-
+        m_stateMachine.OnChangeState(m_stateMachine.DeadState);
     }
     public float CalculateDistanceToPlayer()
     {

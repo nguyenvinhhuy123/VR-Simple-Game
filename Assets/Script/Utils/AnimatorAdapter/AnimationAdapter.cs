@@ -21,22 +21,26 @@ public class AnimationAdapter : MonoBehaviour
     }
     public void PlayIdle()
     {
-        m_animation.CrossFade(IDLE);
+        m_animation.Play(IDLE);
     }
     public void PlayRun()
     {
-        m_animation.CrossFade(RUN);
+        m_animation.Play(RUN);
     }
     public void PlayAttack()
     {
-        m_animation.CrossFade(ATTACK);
+        m_animation.Play(ATTACK);
     }
     public void PlayDamaged()
     {
-        m_animation.CrossFade(DAMAGED);
+        m_animation.Play(DAMAGED);
     }
     public void PlayDead()
     {
-        m_animation.CrossFade(DEAD);
+        m_animation.Play(DEAD);
+    }
+    public bool IsPlaying()
+    {
+        return m_animation.isPlaying;
     }
 }

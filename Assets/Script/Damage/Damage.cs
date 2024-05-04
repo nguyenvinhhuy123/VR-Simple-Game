@@ -33,9 +33,10 @@ public class Damage : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log(this.gameObject.name + " Collide with " + other);
+        if (other == m_colliderToIgnore) return;
+        if (other.gameObject.layer.ToString() == "Weapon") return;
         Debug.Log(m_colliderToIgnore);
         Debug.Log(other == m_colliderToIgnore);
-        if (other == m_colliderToIgnore) return;
         //TODO: Collision mechanism connected to Damagaeble
         if (other.gameObject.TryGetComponent<Health>(out Health heathRef))
         {

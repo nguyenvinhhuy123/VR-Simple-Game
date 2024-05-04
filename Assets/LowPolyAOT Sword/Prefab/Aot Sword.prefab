@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3400382664757569754}
   - component: {fileID: 4859281684507531545}
   - component: {fileID: 8595049263073409239}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Aot Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
