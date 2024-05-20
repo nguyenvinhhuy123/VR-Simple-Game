@@ -16,11 +16,11 @@ public class BaseAIState : IAIState
     }
     public virtual void OnEnter()
     {
-
+        Debug.Log(this.GetType().Name);
     }
     public virtual void OnExit()
     {
-        
+
     }
     public virtual void OnUpdate()
     {
@@ -31,6 +31,6 @@ public class BaseAIState : IAIState
     }
     public virtual void OnFixedUpdate()
     {
-        
+
     }
 }

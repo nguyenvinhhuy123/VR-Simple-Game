@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BaseAIStateMachine
 {
     protected IAIState currentState;
-    
+
     public void OnChangeState(IAIState nextState)
     {
         if (currentState == nextState) return;
@@ -21,5 +21,9 @@ public abstract class BaseAIStateMachine
     public void OnFixedUpdate()
     {
         currentState?.OnFixedUpdate();
+    }
+    public void PrintCurrentState()
+    {
+        Debug.Log("Current state: " + currentState);
     }
 }

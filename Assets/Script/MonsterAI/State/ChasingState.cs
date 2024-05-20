@@ -16,16 +16,11 @@ public class ChasingState : BaseAIState
             return target;
         }
         float num5 = Mathf.Sqrt(num4);
-        Debug.Log(num5);
-        Debug.Log(num);
-        Debug.Log(num2);
-        Debug.Log(num3);
-        Debug.Log(num * num + num2 * num2 + num3 * num3);
 
         return new Vector3(current.x + num / num5 * maxDistanceDelta, current.y + num2 / num5 * maxDistanceDelta, current.z + num3 / num5 * maxDistanceDelta);
     }
     private float m_step;
-    public ChasingState(MonsterAIStateMachine stateMachine): base(stateMachine)
+    public ChasingState(MonsterAIStateMachine stateMachine) : base(stateMachine)
     {
     }
     public override void OnEnter()
@@ -36,25 +31,25 @@ public class ChasingState : BaseAIState
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if (_stateMachine.m_controllerInstance.DistanceToPlayer 
+        if (_stateMachine.m_controllerInstance.DistanceToPlayer
         > _stateMachine.m_controllerInstance.AttackRange)
         {
-            m_step =  _stateMachine.m_controllerInstance.RunSpeed * Time.deltaTime;
+            m_step = _stateMachine.m_controllerInstance.RunSpeed * Time.deltaTime;
             m_self.position = MoveTowards(
-            m_self.position, 
+            m_self.position,
             m_target.position, m_step);
         }
-        
-        
+
+
     }
     public override void OnFixedUpdate()
     {
         base.OnFixedUpdate();
-        if (_stateMachine.m_controllerInstance.DistanceToPlayer 
+        if (_stateMachine.m_controllerInstance.DistanceToPlayer
         <= _stateMachine.m_controllerInstance.AttackRange)
         {
             _stateMachine.OnChangeState(_stateMachine.AttackState);
         }
     }
-    
+
 }

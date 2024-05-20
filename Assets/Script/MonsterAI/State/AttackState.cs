@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class AttackState : BaseAIState
 {
-    
+
     private float m_attackTimer;
-    public AttackState(MonsterAIStateMachine stateMachine): base(stateMachine)
+    public AttackState(MonsterAIStateMachine stateMachine) : base(stateMachine)
     {
-        
+
     }
     public override void OnEnter()
     {
@@ -20,11 +20,12 @@ public class AttackState : BaseAIState
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if (_stateMachine.m_controllerInstance.DistanceToPlayer 
-        > _stateMachine.m_controllerInstance.AttackRange 
+        if (_stateMachine.m_controllerInstance.DistanceToPlayer
+        > _stateMachine.m_controllerInstance.AttackRange
         && m_attackTimer < 0f)
         {
             _stateMachine.OnChangeState(_stateMachine.ChasingState);
+            return;
         }
         Attack();
     }
@@ -32,7 +33,7 @@ public class AttackState : BaseAIState
     {
         m_attackTimer -= Time.fixedDeltaTime;
     }
-        public override void OnExit()
+    public override void OnExit()
     {
         base.OnExit();
         _stateMachine.m_controllerInstance.HitBox.SetActive(false);
