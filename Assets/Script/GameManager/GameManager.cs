@@ -7,6 +7,8 @@ public class GameManager : Singleton<GameManager>
 {
     private GameObject m_player;
     private UnityAction<int, bool> m_onDamagedAction;
+    private UnityEvent m_onGameOver;
+    [SerializeField] private GameObject m_gameOverPanelObject;
     void OnEnable()
     {
         m_onDamagedAction += OnPlayerDamaged;
@@ -19,7 +21,6 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         m_player = GameObject.FindGameObjectWithTag("Player");
-
     }
     void Start()
     {
@@ -38,7 +39,26 @@ public class GameManager : Singleton<GameManager>
     }
     void GameOver()
     {
-
+        Time.timeScale = 0f;
+        m_gameOverPanelObject.SetActive(true);
+        m_onGameOver.Invoke();
+    }
+    public void RegisterOnGameOverEvent(UnityAction action)
+    {
+        m_onGameOver.AddListener(action);
+    }
+    public void UnregisterOnGameOverEvent(UnityAction action)
+    {
+        m_onGameOver.RemoveListener(action);
+    }
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneLoader.Instance.LoadGamePlay();
+    }
+    public void QuitGame()
+    {
+        SceneLoader.Instance.QuitGame();
     }
 }
 
