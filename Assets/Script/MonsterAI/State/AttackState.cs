@@ -22,12 +22,16 @@ public class AttackState : BaseAIState
         base.OnUpdate();
         if (_stateMachine.m_controllerInstance.DistanceToPlayer
         > _stateMachine.m_controllerInstance.AttackRange
-        && m_attackTimer < 0f)
+        && m_attackTimer < 0f && !_stateMachine.m_animation.IsPlaying())
         {
             _stateMachine.OnChangeState(_stateMachine.ChasingState);
             return;
         }
-        Attack();
+        else
+        {
+            Attack();
+        }
+
     }
     public override void OnFixedUpdate()
     {
@@ -36,18 +40,18 @@ public class AttackState : BaseAIState
     public override void OnExit()
     {
         base.OnExit();
-        _stateMachine.m_controllerInstance.HitBox.SetActive(false);
+        _stateMachine.m_controllerInstance.HitBox.GetComponent<Collider>().enabled = false;
     }
     private void Attack()
     {
         if (m_attackTimer > 0f && !_stateMachine.m_animation.IsPlaying())
         {
-            _stateMachine.m_controllerInstance.HitBox.SetActive(false);
+            _stateMachine.m_controllerInstance.HitBox.GetComponent<Collider>().enabled = false;
         }
         if (m_attackTimer <= 0f)
         {
             m_attackTimer = 1 / _stateMachine.m_controllerInstance.AttackRate;
-            _stateMachine.m_controllerInstance.HitBox.SetActive(true);
+            _stateMachine.m_controllerInstance.HitBox.GetComponent<Collider>().enabled = true;
             _stateMachine.m_animation.PlayAttack();
         }
     }

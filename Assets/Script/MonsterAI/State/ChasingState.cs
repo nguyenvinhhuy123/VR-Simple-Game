@@ -40,7 +40,6 @@ public class ChasingState : BaseAIState
             m_target.position, m_step);
         }
 
-
     }
     public override void OnFixedUpdate()
     {

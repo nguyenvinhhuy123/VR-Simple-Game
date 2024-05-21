@@ -54,7 +54,7 @@ public class MonsterAIController : MonoBehaviour
     }
     void Update()
     {
-        m_stateMachine.PrintCurrentState();
+        // m_stateMachine.PrintCurrentState();
         m_stateMachine.OnUpdate();
     }
     void FixedUpdate()

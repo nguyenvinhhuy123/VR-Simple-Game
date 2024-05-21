@@ -28,7 +28,7 @@ public class AnimationAdapter : MonoBehaviour
     {
         if (m_animator != null)
         {
-            m_animator.Play(IDLE);
+            m_animator.Play(IDLE, 0, 0f);
             return;
         }
         m_animation.Play(IDLE);
@@ -37,16 +37,17 @@ public class AnimationAdapter : MonoBehaviour
     {
         if (m_animator != null)
         {
-            m_animator.Play(RUN);
+            m_animator.Play(RUN, 0, 0f);
             return;
         }
         m_animation.Play(RUN);
     }
     public void PlayAttack()
     {
+        Debug.Log("PlayAttack");
         if (m_animator != null)
         {
-            m_animator.Play(ATTACK);
+            m_animator.Play(ATTACK, 0, 0f);
             return;
         }
         m_animation.Play(ATTACK);
@@ -55,7 +56,7 @@ public class AnimationAdapter : MonoBehaviour
     {
         if (m_animator != null)
         {
-            m_animator.Play(DAMAGED);
+            m_animator.Play(DAMAGED, 0, 0f);
             return;
         }
         m_animation.Play(DAMAGED);
@@ -64,7 +65,7 @@ public class AnimationAdapter : MonoBehaviour
     {
         if (m_animator != null)
         {
-            m_animator.Play(DEAD);
+            m_animator.Play(DEAD, 0, 0f);
             return;
         }
         m_animation.Play(DEAD);
@@ -73,8 +74,8 @@ public class AnimationAdapter : MonoBehaviour
     {
         if (m_animator != null)
         {
-            return m_animator.GetCurrentAnimatorStateInfo(0).length >
-                    m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            Debug.Log(m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            return m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1;
         }
         return m_animation.isPlaying;
     }

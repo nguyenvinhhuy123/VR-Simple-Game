@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class DamagedState : BaseAIState
 {
-    public DamagedState(MonsterAIStateMachine stateMachine): base(stateMachine)
+
+    public DamagedState(MonsterAIStateMachine stateMachine) : base(stateMachine)
     {
-        
     }
     public override void OnEnter()
     {
         base.OnEnter();
         _stateMachine.m_animation.PlayDamaged();
-        var moveDirection = m_self.transform.position - m_target.transform.position;
+        var moveDirection = m_target.transform.position - m_self.transform.position;
         _stateMachine.m_body.AddForce(moveDirection.normalized * -500f);
     }
     public override void OnUpdate()
