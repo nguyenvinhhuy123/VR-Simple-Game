@@ -74,7 +74,6 @@ public class AnimationAdapter : MonoBehaviour
     {
         if (m_animator != null)
         {
-            Debug.Log(m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
             return m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1;
         }
         return m_animation.isPlaying;
