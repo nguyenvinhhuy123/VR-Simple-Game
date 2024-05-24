@@ -21,6 +21,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         m_player = GameObject.FindGameObjectWithTag("Player");
+        m_onGameOver = new UnityEvent();
     }
     void Start()
     {
