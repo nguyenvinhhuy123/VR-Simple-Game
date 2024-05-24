@@ -6,11 +6,12 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int m_Health;
-    public int MaxHealth {get {return m_Health;} set {m_Health = value;}}
+    public int MaxHealth { get { return m_Health; } set { m_Health = value; } }
     //*Track Current health of this obj*/
     [SerializeField] private int m_CurrentHealth;
+    public int CurrentHealth { get { return m_CurrentHealth; } }
     [SerializeField] private float m_IFrameTime;
-    public float IFrameTime {get {return m_IFrameTime;} set {m_IFrameTime = value;}}
+    public float IFrameTime { get { return m_IFrameTime; } set { m_IFrameTime = value; } }
     private float m_IFrameTimer;
     /*
     *m_damageEvent<currentHealth: int, isDead_:bool>
@@ -30,7 +31,7 @@ public class Health : MonoBehaviour
     void Update()
     {
         //Update timer call for IFrameTimer
-        m_IFrameTimer -= Time.deltaTime; 
+        m_IFrameTimer -= Time.deltaTime;
     }
     /// <summary>
     /// Reset this obj current health to max_health
@@ -38,7 +39,7 @@ public class Health : MonoBehaviour
     public void ResetHealth()
     {
         m_CurrentHealth = m_Health;
-    } 
+    }
     /// <summary>
     /// Method to call when damage this damageable from outer source
     /// </summary>
@@ -50,12 +51,12 @@ public class Health : MonoBehaviour
         if (m_IFrameTimer >= 0f)
         {
             return;
-        } 
+        }
         m_CurrentHealth -= inputDamage;
         if (m_CurrentHealth <= 0)
         {
             m_CurrentHealth = 0;
-            isDead =true;
+            isDead = true;
         }
         m_onDamagedEvent.Invoke(m_CurrentHealth, isDead);
         if (isDead) return;
